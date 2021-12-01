@@ -22,7 +22,7 @@ jobs:
 
       - name: Get PR Link
         run: |
-          echo ::set-output name=pr_link::$( echo github.event.comment.body | awk '{print $NF}')
+          echo ::set-output name=pr_link::test
           echo ${{ github.event.comment.body }}
 
       # Runs a set of commands using the runners shell
