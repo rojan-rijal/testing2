@@ -22,7 +22,7 @@ jobs:
 
       - name: Get PR Link
         run: |
-          echo ::set-output name=pr_link::test
+          echo ::set-output name=pr_link::'test'
           echo ${{ steps.vars.outputs.pr_link }}
 
       # Runs a set of commands using the runners shell
