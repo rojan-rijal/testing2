@@ -23,8 +23,7 @@ jobs:
       - name: Set PR Link
         id: setpr
         run: |
-          echo ::set-output name=pr_link::'test'
-          echo ${{ steps.setpr.outputs.pr_link }}
+          echo ::set-output name=pr_link::$(echo ${{ github.event.comment.body }} | awk '{print $NF}')
           
       - name: Get PR Link
         id: getpr
