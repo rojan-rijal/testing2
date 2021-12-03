@@ -39,6 +39,15 @@ jobs:
         run: |
           FILE=./files/mapping.txt
           echo 'hello' > $FILE
+          
+      - name: Push Project B
+        run: |
+          cd ./files
+          git add .
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git commit -am "File Replicated from Project A"
+          git push
   
 
       # Runs a set of commands using the runners shell
