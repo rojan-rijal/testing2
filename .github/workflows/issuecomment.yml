@@ -28,7 +28,7 @@ jobs:
       - name: Get PR Link
         id: getpr
         run: |
-          echo ${{github.event.issue}} , ${{ steps.setpr.outputs.pr_link }}
+          echo ${{ steps.setpr.outputs.pr_link }}
           
       - name: Checkout Project
         uses: actions/checkout@v2
@@ -38,7 +38,7 @@ jobs:
       - name: echo to file
         run: |
           FILE=./files/mapping.txt
-          echo  ${{ steps.setpr.outputs.pr_link }}  >> $FILE
+          echo ${{github.event.issue.id}} , ${{ steps.setpr.outputs.pr_link }}  >> $FILE
           
       - name: Push Project B
         run: |
