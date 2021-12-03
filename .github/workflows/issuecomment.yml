@@ -38,7 +38,7 @@ jobs:
       - name: echo to file
         run: |
           FILE=./files/mapping.txt
-          echo ${{github.event.issue.id}} , ${{ steps.setpr.outputs.pr_link }}  >> $FILE
+          echo ${{github.event.issue.url}} , ${{ steps.setpr.outputs.pr_link }}  >> $FILE
           
       - name: Push Project B
         run: |
