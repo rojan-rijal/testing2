@@ -43,7 +43,7 @@ jobs:
         run: |
           MAPPINGFILE=./files/mapping.txt
           echo "starting loop"
-          cat MAPPINGFILE | while read line
+          cat $MAPPINGFILE | while read line
           do
             echo "this line says: "+$line
           done
