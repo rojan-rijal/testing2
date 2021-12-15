@@ -45,7 +45,8 @@ jobs:
           echo "starting loop"
           cat $MAPPINGFILE | while read line
           do
-            echo "this line says: "+$line
+            //Get PR link from line
+            echo "the PR link is: "+(echo $line | awk '{print $NF}')
           done
       
 
