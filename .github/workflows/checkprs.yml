@@ -41,12 +41,11 @@ jobs:
       - name: Get Associations
         id: getassociations
         run: |
-          MAPPINGFILE=./files/mapping.txt
-          echo "starting loop"
-          cat $MAPPINGFILE | while read line
-          do
-            //Get PR link from line
-            echo "this line says: "+$line
-          done
+            MAPPINGFILE=./files/mapping.txt
+            echo "starting loop"
+            cat $MAPPINGFILE | while read line
+            do
+              echo "this line says: "+$line
+            done
       
 
