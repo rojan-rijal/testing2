@@ -12,17 +12,17 @@ on:
         # Friendly description to be shown in the UI instead of 'name'
         description: 'ID of the CVE'
         # Default value if no value is explicitly provided
-        default: 'World'
+        default: ''
         # Input has to be provided for the workflow to run
         required: true
       statement:
         description: 'statement text'
         default: ''
-        required: false
+        required: true
       Product:
         description: 'Product of the Vuln'
         default: ''
-        required: false
+        required: true
       Vuln Description:
         description: 'vulnerability description'
         default: ''
