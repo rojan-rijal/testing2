@@ -15,7 +15,7 @@ on:
         default: ''
         # Input has to be provided for the workflow to run
         required: true
-      statement:
+      Statement:
         description: 'statement text'
         default: ''
         required: true
@@ -23,12 +23,20 @@ on:
         description: 'Product of the Vuln'
         default: ''
         required: true
-      Vuln Description:
+      VulnDescription:
         description: 'vulnerability description'
         default: ''
         required: false
-      External Reference:
+      ExternalReference:
         description: 'Link to Details'
+        default: ''
+        required: false
+      Verions:
+        description: 'Vulnerable Versions'
+        default: ''
+        required: true
+      Status:
+        description: 'Status of this vulnerable on our product'
         default: ''
         required: false
 
@@ -52,11 +60,12 @@ jobs:
           
       - name: Make File
         run: |
-          echo '{"id":"${{ github.event.inputs.CVE-ID }}","statement":"${{github.event.inputs.statement}}"}' > ./files/testing.json
+          touch "./files/${{github.event.inputs.CVE-ID}}-${{github.event.inputs.Product}}.json"
+          echo '{"id":"${{ github.event.inputs.CVE-ID }}","description":"${{github.event.inputs.VulnDescription}}","references":"${{github.event.inputs.ExternalReference}}","product":"${{github.event.inputs.Product}}","verions":"${{github.event.inputs.Verions}}","status":"${{github.event.inputs.Status}}","statement":"${{github.event.inputs.Statement}}"}' > "./files/${{github.event.inputs.CVE-ID}}-${{github.event.inputs.Product}}.json"
           
       - name: Commit Change
         run: |
-          git add ./files/testing.json
+          git add "./files/${{github.event.inputs.CVE-ID}}-${{github.event.inputs.Product}}.json"
           git config user.name github-actions
           git config user.email github-actions@github.com
           git commit -am "Adding New Statement json"
