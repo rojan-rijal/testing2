@@ -52,7 +52,7 @@ jobs:
           
       - name: Make File
         run: |
-          echo '{"id":"${{ github.event.inputs.CVE-ID }}"}' > ./files/testing.json
+          echo '{"id":"${{ github.event.inputs.CVE-ID }}","statement":"${{github.event.inputs.statement}}"}' > ./files/testing.json
           
       - name: Commit Change
         run: |
