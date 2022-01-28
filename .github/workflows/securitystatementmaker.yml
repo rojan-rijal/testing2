@@ -49,6 +49,10 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    
+      - name: Install JQ
+        run: |
+          sudo apt install jq
         
       - name: Example
         run: echo "Hello ${{ github.event.inputs.CVE-ID }}, your age is ${{github.event.inputs.statement}}"
