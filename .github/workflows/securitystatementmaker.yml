@@ -43,7 +43,7 @@ jobs:
     steps:
         
       - name: Example
-      run: echo "Hello ${{ github.event.inputs.CVE-ID }}, your age is ${{github.event.inputs.statement}}"
+        run: echo "Hello ${{ github.event.inputs.CVE-ID }}, your age is ${{github.event.inputs.statement}}"
     
       - name: Checkout Project
         uses: actions/checkout@v2
