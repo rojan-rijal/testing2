@@ -62,6 +62,7 @@ jobs:
         run: |
           touch "./files/${{github.event.inputs.CVE-ID}}-${{github.event.inputs.Product}}.json"
           echo '{"id":"${{ github.event.inputs.CVE-ID }}","description":"${{github.event.inputs.VulnDescription}}","references":"${{github.event.inputs.ExternalReference}}","product":"${{github.event.inputs.Product}}","verions":"${{github.event.inputs.Verions}}","status":"${{github.event.inputs.Status}}","statement":"${{github.event.inputs.Statement}}"}' > "./files/${{github.event.inputs.CVE-ID}}-${{github.event.inputs.Product}}.json"
+          jq . "./files/${{github.event.inputs.CVE-ID}}-${{github.event.inputs.Product}}.json" > "./files/${{github.event.inputs.CVE-ID}}-${{github.event.inputs.Product}}.json"
           
       - name: Commit Change
         run: |
