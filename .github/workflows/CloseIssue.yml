@@ -17,6 +17,8 @@ jobs:
   close_h1_issue:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    env:
+      report_number: 1602681
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -35,4 +37,4 @@ jobs:
           
       - name: run curl command
         run: |
-          curl --location --request POST 'https://api.hackerone.com/v1/reports/1602681/state_changes' --header 'Authorization: Basic ZGRheXRlc3QyOitaM0dxdDA0TXRVYis4QUVURkZsY0orRnQ0L21tVHhZZ3RVNjQ5WURDT2M9' --header 'Content-Type: application/json' --data-raw '{"data": {"type": "state-change","attributes": {"message": "string","state": "resolved"    }}}'
+          curl --location --request POST 'https://api.hackerone.com/v1/reports/'+${{env.report_number}}+'/state_changes' --header 'Authorization: Basic ZGRheXRlc3QyOitaM0dxdDA0TXRVYis4QUVURkZsY0orRnQ0L21tVHhZZ3RVNjQ5WURDT2M9' --header 'Content-Type: application/json' --data-raw '{"data": {"type": "state-change","attributes": {"message": "string","state": "resolved"    }}}'
