@@ -37,4 +37,4 @@ jobs:
           
       - name: run curl command
         run: |
-          curl --location --request POST 'https://api.hackerone.com/v1/reports/'${{env.report_number}}'/state_changes' --header 'Authorization: Basic ZGRheXRlc3QyOitaM0dxdDA0TXRVYis4QUVURkZsY0orRnQ0L21tVHhZZ3RVNjQ5WURDT2M9' --header 'Content-Type: application/json' --data-raw '{"data": {"type": "state-change","attributes": {"message": "string","state": "resolved"    }}}'
+          curl --location --request POST 'https://api.hackerone.com/v1/reports/'${{env.report_number}}'/state_changes' --header 'Authorization: Basic ${{secrets.H1_TOKEN}}' --header 'Content-Type: application/json' --data-raw '{"data": {"type": "state-change","attributes": {"message": "string","state": "resolved"    }}}'
