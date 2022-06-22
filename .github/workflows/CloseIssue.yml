@@ -1,11 +1,10 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: CloseH1Issue
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "branch1" branch
-  issues:
+  # Triggers the workflow on an issue close
     types: [ "closed" ]
 
 
@@ -14,8 +13,8 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
+  # This workflow contains a single job called "close_h1_issue"
+  close_h1_issue:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -33,3 +32,18 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+          
+      - name: run curl command
+        run: |
+          curl --location --request POST 'https://api.hackerone.com/v1/reports/1602681/state_changes' \
+--header 'Authorization: Basic ZGRheXRlc3QyOitaM0dxdDA0TXRVYis4QUVURkZsY0orRnQ0L21tVHhZZ3RVNjQ5WURDT2M9' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "data": {
+    "type": "state-change",
+    "attributes": {
+      "message": "string",
+      "state": "resolved"
+    }
+  }
+}'
