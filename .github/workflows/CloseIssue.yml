@@ -3,6 +3,7 @@ name: CloseH1Issue
 
 # Controls when the workflow will run
 on:
+  issues:
   # Triggers the workflow on an issue close
     types: [ "closed" ]
 
