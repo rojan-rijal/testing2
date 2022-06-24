@@ -19,11 +19,16 @@ jobs:
     runs-on: ubuntu-latest
     env:
       report_number: 1602681
+      body: ${{ github.event.issue.body }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+
+      - name: Get H1 Report Number
+        run: |
+          echo ${{env.body}} | tail -n1
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
