@@ -28,7 +28,7 @@ jobs:
 
       - name: Get H1 Report Number
         run: |
-          echo ${{env.body}} | tail -n1
+          echo "$body" | tail -n1
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
