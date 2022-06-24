@@ -29,8 +29,7 @@ jobs:
       - name: Get H1 Report Number
         id: get_report_num
         run: |
-          echo THE REPORT NUMBER IS "$body" | tail -n1 | rev | cut -d "/" -f 1
-          echo ::set-output name=report_num::$(echo "$body" | tail -n1 | rev | cut -d "/" -f 1)
+          echo ::set-output name=report_num::$(echo "$body" | tail -n1 | rev | cut -d "/" -f 1 | rev)
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
