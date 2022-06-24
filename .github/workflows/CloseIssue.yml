@@ -28,7 +28,7 @@ jobs:
 
       - name: Get H1 Report Number
         run: |
-          echo "$body" | tail -n1
+          echo THE REPORT NUMBER IS "$body" | tail -n1 | rev | cut -d "/" -f 1
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
