@@ -7,7 +7,7 @@ on:
       - labeled
 jobs:
   add-comment:
-    if: github.event.label.name == 'hackerone'
+    if: github.event.label.name == 'hackerone' && github.event.issue.title == 'test123'
     runs-on: ubuntu-latest
     permissions:
       issues: write
