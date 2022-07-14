@@ -26,13 +26,18 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      - name: Get Line Number With H1 Link
+        id: get_line_num
+        run: |
+          echo ::set-output name=line_num::$(echo "$body" | grep -n 'https://hackerone.com/' | cut -d ":" -f 1)
+      
+      
+      
       - name: Get H1 Report Number
         id: get_report_num
         run: |
-          echo ::set-output name=line_num::$(echo "$body" | grep -n 'https://hackerone.com/' | cut -d ":" -f 1)
           echo DEBUG THE LINE NUMBER IS: ${{steps.get_report_num.outputs.line_num}}
-          echo ::set-output name=report_num::$(echo "$body" | sed -n '${{steps.get_report_num.outputs.line_num}}p' | rev | cut -d "/" -f 1 | rev)
-          echo DEBUG THE REPORT NUMBER IS ${{steps.get_report_num.outputs.report_num}}
+          echo ::set-output name=report_num::$(echo "$body" | sed -n '${{steps.get_line_num.outputs.line_num}}p' | rev | cut -d "/" -f 1 | rev)
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
