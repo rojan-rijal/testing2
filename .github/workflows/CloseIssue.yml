@@ -29,7 +29,7 @@ jobs:
       - name: Get H1 Report Number
         id: get_report_num
         run: |
-          echo ::set-output name=line_num::$(echo "$body" | grep -n 'https://hackerone.com/' test.txt | cut -d ":" -f 1)
+          echo ::set-output name=line_num::$(echo "$body" | grep -n 'https://hackerone.com/' | cut -d ":" -f 1)
           echo ::set-output name=report_num::$(echo "$body" | sed -n '${{steps.get_report_num.outputs.line_num}}p' | rev | cut -d "/" -f 1 | rev)
 
       # Runs a single command using the runners shell
