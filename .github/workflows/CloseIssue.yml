@@ -54,5 +54,6 @@ jobs:
           echo test, and deploy your project.
           
       - name: run curl command
+        if: ${{steps.get_line_num.outputs.line_num != null}} 
         run: |
           curl --location --request POST 'https://api.hackerone.com/v1/reports/'${{steps.get_report_num.outputs.report_num}}'/state_changes' --header 'Authorization: Basic ${{secrets.H1_TOKEN}}' --header 'Content-Type: application/json' --data-raw '{"data": {"type": "state-change","attributes": {"message": "string","state": "resolved"    }}}'
