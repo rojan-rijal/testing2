@@ -1,7 +1,7 @@
 name: Conventional Commits Checker
 on:
   pull_request:
-    types: [opened, synchronize, reopened, edited]
+    types: [opened]
 jobs:
   lint-commits:
     runs-on: ubuntu-latest
